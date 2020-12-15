@@ -1,0 +1,45 @@
+const mysql = require("mysql");
+
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "hyfuser",
+  password: "hyfpassword",
+  database: "new_world",
+  // port : 3307
+  insecureAuth: true,
+});
+
+connection.connect();
+
+const createQuery = [
+  // What are the names of countries with population greater than 8 million?
+  "SELECT Name FROM new_world.country where Population >  8000000",
+  // What are the names of countries that have “land” in their names?
+  "SELECT Name from new_world.country where Name like '%land%'",
+  // What are the names of the cities with population in between 500,000 and 1 million?
+  "SELECT Name from new_world.city where Population > 500000 && Population < 1000000",
+  // What's the name of all the countries on the continent ‘Europe’?
+  "SELECT Name from new_world.country where Continent = 'Europe'",
+  // List all the countries in the descending order of their surface areas.
+  "SELECT Name from new_world.country order by SurfaceArea",
+  // What are the names of all the cities in the Netherlands?
+  "SELECT Name from new_world.city where CountryCode = 'NLD'",
+  // What is the population of Rotterdam?
+  "SELECT Population from new_world.city where Name = 'Rotterdam'",
+  //What's the top 10 countries by Surface Area?
+  "SELECT Name FROM new_world.country order by SurfaceArea desc limit 10",
+  // What's the top 10 most populated cities?
+  "SELECT Name, Population FROM new_world.city order by Population desc limit 10",
+  //What is the population number of the world?
+  "SELECT SUM(Population) FROM new_world.country",
+];
+
+createQuery.forEach((query) => {
+  connection.query(query, (error, results, fields) => {
+    if (error) throw error;
+    console.log(query);
+    console.log(results);
+  });
+});
+
+connection.end();
