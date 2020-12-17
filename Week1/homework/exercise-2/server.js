@@ -11,30 +11,30 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-const createQuery = [
+const queries = [
   // What are the names of countries with population greater than 8 million?
-  "SELECT Name FROM new_world.country where Population >  8000000",
+  "SELECT Name FROM new_world.country WHERE Population >  8000000",
   // What are the names of countries that have “land” in their names?
-  "SELECT Name from new_world.country where Name like '%land%'",
+  "SELECT Name FROM new_world.country WHERE Name like '%land%'",
   // What are the names of the cities with population in between 500,000 and 1 million?
-  "SELECT Name from new_world.city where Population > 500000 && Population < 1000000",
+  "SELECT Name FROM new_world.city WHERE Population > 500000 && Population < 1000000",
   // What's the name of all the countries on the continent ‘Europe’?
-  "SELECT Name from new_world.country where Continent = 'Europe'",
+  "SELECT Name FROM new_world.country WHERE Continent = 'Europe'",
   // List all the countries in the descending order of their surface areas.
-  "SELECT Name from new_world.country order by SurfaceArea",
+  "SELECT Name FROM new_world.country order by SurfaceArea desc",
   // What are the names of all the cities in the Netherlands?
-  "SELECT Name from new_world.city where CountryCode = 'NLD'",
+  "SELECT Name FROM new_world.city WHERE CountryCode = 'NLD'",
   // What is the population of Rotterdam?
-  "SELECT Population from new_world.city where Name = 'Rotterdam'",
+  "SELECT Population FROM new_world.city WHERE Name = 'Rotterdam'",
   //What's the top 10 countries by Surface Area?
-  "SELECT Name FROM new_world.country order by SurfaceArea desc limit 10",
+  "SELECT Name FROM new_world.country order by SurfaceArea desc LIMIT 10",
   // What's the top 10 most populated cities?
-  "SELECT Name, Population FROM new_world.city order by Population desc limit 10",
+  "SELECT Name, Population FROM new_world.city order by Population desc LIMIT 10",
   //What is the population number of the world?
   "SELECT SUM(Population) FROM new_world.country",
 ];
 
-createQuery.forEach((query) => {
+queries.forEach((query) => {
   connection.query(query, (error, results, fields) => {
     if (error) throw error;
     console.log(query);
