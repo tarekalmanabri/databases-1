@@ -76,15 +76,10 @@ const queries = [
   "SELECT  university,  avg(h_index) FROM Authors group by university",
 
   // Sum of the research papers of the authors per university.
-  "SELECT count(*)  FROM Research_Papers join Authors ON Authors.author_no = Research_Papers.author_no WHERE Authors.university = 'Utrecht university'",
-
-  "SELECT count(*)  FROM Research_Papers join Authors ON Authors.author_no = Research_Papers.author_no WHERE Authors.university = 'amsterdam university'",
+  "SELECT count(*) , university  FROM Research_Papers join Authors ON Authors.author_no = Research_Papers.author_no GROUP BY Authors.university",
 
   // Minimum and maximum of the h-index of all authors per university.
-  "SELECT MIN(h_index) AS 'lowest h-index' FROM Authors WHERE university = 'amsterdam university'",
-  "SELECT MIN(h_index) AS 'lowest h-index' FROM Authors WHERE university = 'Utrecht university'",
-  "SELECT MAX(h_index) FROM Authors WHERE university = 'amsterdam university'",
-  "SELECT MAX(h_index) FROM Authors WHERE university = 'Utrecht university'",
+  "SELECT MIN(h_index), MAX(h_index) FROM Authors GROUP BY Authors.university",
 ];
 
 queries.forEach((query) => {
