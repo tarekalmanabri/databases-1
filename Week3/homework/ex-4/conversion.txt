@@ -1,0 +1,5 @@
+I tried to use the commands that were needed to get it done but i kept getting the error 
+(ERROR 1290 (HY000): The MySQL server is running with the --secure-file-priv option so it cannot execute this statement) when i look at the file (--secure-file-priv) the path of it is NULL, 
+I looked the error it turns out I need to change the file path of the file which got me really confused and i couldn't do so if you got any tip i'd love to hear it. 
+
+Instead I created a MongoDB atlas account then exported the tables from the mysql workbench  as a csv files and imported them to the MongoDB compass, and now I do have them in the MongoDB database but not with the commands provided in the homework preparing.

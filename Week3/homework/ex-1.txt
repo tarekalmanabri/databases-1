@@ -1,0 +1,9 @@
+1- (dinner_date, food_code, food_ description) 
+
+2- (member, dinner, venue, food)
+
+3- 
+members : member_id, member_name, member_address.
+dinners : dinner_id, dinner_date, member_id, venue_code
+venue : venue_code, venue_description.
+food : food_code, food_description.
