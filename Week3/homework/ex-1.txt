@@ -3,7 +3,8 @@
 2- (member, dinner, venue, food)
 
 3- 
-members : member_id, member_name, member_address.
-dinners : dinner_id, dinner_date, member_id, venue_code
-venue : venue_code, venue_description.
-food : food_code, food_description.
+members : member_id pk, member_name varchar, member_address varchar.
+dinners : dinner_id pk, dinner_date date, member_id pk, venue_code int
+venue : venue_code int, venue_description varchar.
+food : food_code int, food_description varchar.
+order : food_code int , dinner_id pk.

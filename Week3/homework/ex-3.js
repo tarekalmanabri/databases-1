@@ -28,10 +28,13 @@ const conn = mysql.createConnection({
 // });
 //
 // getPopulation(
-//   "Country", "'Germany' OR 1=1 show tables", "'DEU' OR 1=1, show tables",
-// (err, result) => {
-//   if (err) console.log(err);
-//   console.log(result);
+//   "Country",
+//   "'Germany'",
+//   "'DEU' OR 1=1, show tables",
+//   (err, result) => {
+//     if (err) console.log(err);
+//     console.log(result);
+//   }
 // );
 
 // second part (fixed)

@@ -14,17 +14,16 @@ let queries = [
   "CREATE DATABASE week3_database",
   "USE week3_database",
   "CREATE TABLE account(account_number INT PRIMARY KEY, balance INT)",
-  "CREATE TABLE account_changes(change_number INT PRIMARY KEY , account_number INT NOT NULL, amount INT, changed_date DATE, remark TEXT",
+  "CREATE TABLE account_changes(change_number INT PRIMARY KEY , account_number INT NOT NULL, amount INT NOT NULL, changed_date DATE, remark TEXT)",
 ];
 
 module.exports = { queries };
 module.exports = { connection };
-// queries.forEach((query) => {
-//   connection.query(query, (err, results, fields) => {
-//     if (err) {
-//       throw err;
-//     }
-//     console.log(results);
-//   });
-// });
-// connection.end();
+queries.forEach((query) => {
+  connection.query(query, (err, results, fields) => {
+    if (err) {
+      throw err;
+    }
+    console.log(results);
+  });
+});
