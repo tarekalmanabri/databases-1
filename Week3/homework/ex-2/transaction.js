@@ -5,8 +5,8 @@ queries = [
   "START TRANSACTION",
   "UPDATE account SET balance = balance - 1000 WHERE account_number = 101",
   "UPDATE account SET balance = balance + 1000 WHERE account_number = 102",
-  "INSERT account_change(account_number, amount, remark, changed_date) VALUES(101, -1000, 'rent', 2020-03-13) ",
-  "INSERT account_change(account_number, amount, remark, changed_date) VALUES(102, +1000, 'rent', 2020-03-13) ",
+  "INSERT account_changes(account_number, amount, remark, changed_date) VALUES(101, -1000, 'rent', NOW()) ",
+  "INSERT account_changes(account_number, amount, remark, changed_date) VALUES(102, +1000, 'rent', NOW()) ",
   "COMMIT",
 ];
 queries.forEach((query) => {
